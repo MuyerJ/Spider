@@ -491,4 +491,64 @@ public class Request {
         return retryRequest(1);
     }
 
+    public Request setCharSet(String charSet) {
+        this.charSet = charSet;
+        return this;
+    }
+
+    public Request setContent(String content) {
+        this.content = content;
+        return this;
+    }
+
+    public Request setPackageMap(Map<String, Object> packageMap) {
+        this.packageMap = packageMap;
+        return this;
+    }
+
+    public Request setStatusCode(int statusCode) {
+        this.statusCode = statusCode;
+        return this;
+    }
+
+    public Request setResponseHeadersMap(Map<String, String> responseHeadersMap) {
+        this.responseHeadersMap = responseHeadersMap;
+        return this;
+    }
+
+    public Map<String, String> getCookiesMap() {
+        return cookiesMap;
+    }
+
+    public Request setCookiesMap(Map<String, String> cookiesMap) {
+        this.cookiesMap = cookiesMap;
+        return this;
+    }
+
+    public Proxy getProxy() {
+        return proxy;
+    }
+
+    public CredentialsProvider getCredsProvider() {
+        return credsProvider;
+    }
+
+    public Request setCredsProvider(CredentialsProvider credsProvider) {
+        this.credsProvider = credsProvider;
+        return this;
+    }
+
+    public Request setUrl(String url) {
+        this.url = url;
+        return this;
+    }
+
+    public String getErrorDescription() {
+        return errorDescription;
+    }
+
+    public Request setErrorDescription(String errorDescription) {
+        this.errorDescription = errorDescription;
+        return this;
+    }
 }
