@@ -131,6 +131,7 @@ public class Request {
 
     public Request get(String url, CallBack callBack, int timeOut) {
         Runnable task = () -> rawGet(url, callBack);
+        //线程池执行请求
         future(task);
         return this;
     }
@@ -140,33 +141,40 @@ public class Request {
     protected Request rawGet(String url, CallBack callBack) {
         //设置请求类型为get
         this.requestType = "get";
+
         HttpGet httpGet = new HttpGet(url);
+
         //检测是否使用了代理
         if (this.proxy != null) {
             requestConfigBuilder.setProxy(new HttpHost(this.proxy.getHost(), this.proxy.getPort()));
         }
 
-
+        //请求参数配置
         RequestConfig requestConfig = requestConfigBuilder.build();
+
+        //请求cookie配置
         RequestConfig cookieConfig = RequestConfig.copy(requestConfig)
                 .setCookieSpec(CookieSpecs.STANDARD_STRICT)
                 .build();
         httpGet.setConfig(cookieConfig);
 
+        //设置请求头
         httpGet.setHeaders(transRequestHeaderMapToHeaderArray(this.requestHeadersMap));
+
+        //代理认证
         if (this.proxy != null && this.proxy.getUserName() != null) {
             credsProvider = new BasicCredentialsProvider();
             credsProvider.setCredentials(AuthScope.ANY, new UsernamePasswordCredentials(this.proxy.getUserName(), this.proxy.getPassword()));
             httpClientBuilder.setDefaultCredentialsProvider(credsProvider);
         }
-        try (CloseableHttpClient httpclient = httpClientBuilder.setDefaultCookieStore(this.cookieStore).build()) {
+        //请求
+        CloseableHttpClient httpclient = httpClientBuilder.setDefaultCookieStore(this.cookieStore).build();
+        try {
             execute(url, httpGet, httpclient);
         } catch (IOException e) {
             e.printStackTrace();
-            if (e.toString().contains("114.104.130.95")) {
-                System.out.println("114.104.130.95的抓取页面为" + url);
-            }
         }
+        //回调
         if (callBack != null) {
             callBack.func(this);
         }
@@ -259,37 +267,7 @@ public class Request {
         try (CloseableHttpClient httpclient = httpClientBuilder.build()) {
             execute(url, post, httpclient);
         } catch (IOException | ParseException e) {
-            if (e.toString().contains("192.168.0.250:8050")) {
-                //当出现了这条数据时意味着250的splash处理不过来了
-                try {
-                    TimeUnit.SECONDS.sleep(3);
-                } catch (InterruptedException ignored) {
-                }
-            }
-
-            //出现此原因立即回拨
-            String massage = e.toString();
-            for (int reTryTimes = 0; reTryTimes <= 10 && massage.contains("wenshu.court.gov.cn:80"); reTryTimes++) {
-                try (CloseableHttpClient httpclient = httpClientBuilder.build()) {
-                    execute(url, post, httpclient);
-                    Thread.sleep(1000);
-                    massage = "";
-                } catch (IOException | InterruptedException e1) {
-                    massage = e1.toString();
-                }
-            }
-            if (!"".equals(massage)) {
-                if (e.toString().contains("wenshu.court.gov.cn:80")) {
-                    //当出现此信息是意味着文书网需要校验验证码
-                    System.out.println("文书网出现验证码");
-                } else if (e.toString().contains("Connection refused")) {
-                    System.out.println("Connection refused的抓取页面为" + url);
-                } else {
-                    System.out.println("异常未显示：" + e.toString());
-                }
-
-            }
-
+            e.printStackTrace();
         }
         if (callBack != null) {
             callBack.func(this);
