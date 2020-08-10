@@ -1,13 +1,12 @@
 package com.muyer.httpclient.crawl;
 
+import com.muyer.crawl.util.Request;
 import com.muyer.httpclient.model.CnBlogModel;
-import com.muyer.httpclient.util.Request;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;

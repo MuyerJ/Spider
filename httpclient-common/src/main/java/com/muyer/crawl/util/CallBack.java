@@ -1,4 +1,4 @@
-package com.muyer.httpclient.util;
+package com.muyer.crawl.util;
 
 /**
  * Description: <br/>

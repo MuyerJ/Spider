@@ -1,4 +1,4 @@
-package com.muyer.httpclient.util;
+package com.muyer.crawl.util;
 
 import org.apache.http.*;
 import org.apache.http.auth.AuthScope;
@@ -95,8 +95,8 @@ public class Request {
         LayeredConnectionSocketFactory sslsf = SSLConnectionSocketFactory.getSocketFactory();
         Registry<ConnectionSocketFactory> registry =
                 RegistryBuilder.<ConnectionSocketFactory>create()
-                .register("http", plainsf)
-                .register("https", sslsf).build();
+                        .register("http", plainsf)
+                        .register("https", sslsf).build();
         PoolingHttpClientConnectionManager connectionManager = new PoolingHttpClientConnectionManager(registry);
         // 将最大连接数增加
         connectionManager.setMaxTotal(100);
