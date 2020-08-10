@@ -1,5 +1,6 @@
 package com.muyer.crawl.util;
 
+import com.muyer.crawl.model.Proxy;
 import org.apache.http.*;
 import org.apache.http.auth.AuthScope;
 import org.apache.http.auth.UsernamePasswordCredentials;

@@ -10,6 +10,7 @@
     <modules>
         <module>httpclient-common</module>
         <module>httpclient-factory</module>
+        <module>ip-pool</module>
     </modules>
 
     <packaging>pom</packaging>

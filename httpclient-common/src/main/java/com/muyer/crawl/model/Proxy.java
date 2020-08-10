@@ -1,4 +1,4 @@
-package com.muyer.crawl.util;
+package com.muyer.crawl.model;
 
 /**
  * Description:

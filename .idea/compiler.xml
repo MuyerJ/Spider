@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="httpclient-common" />
         <module name="httpclient-factory" />
+        <module name="ip-pool" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
