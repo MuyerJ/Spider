@@ -9,6 +9,7 @@
         <module name="httpclient-common" />
         <module name="httpclient-factory" />
         <module name="ip-pool" />
+        <module name="networm" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>

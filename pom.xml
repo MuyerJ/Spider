@@ -5,12 +5,13 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.muyer</groupId>
-    <artifactId>httpclient-parrent</artifactId>
+    <artifactId>spider</artifactId>
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>httpclient-common</module>
         <module>httpclient-factory</module>
         <module>ip-pool</module>
+        <module>networm</module>
     </modules>
 
     <packaging>pom</packaging>
