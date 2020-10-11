@@ -1,2 +1,2 @@
-# HttpClient-study
-对于HttpClient这个框架的研究。。
+# Java爬虫
+### 基于HttpClient封装的框架
