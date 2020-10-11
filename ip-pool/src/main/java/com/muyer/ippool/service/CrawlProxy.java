@@ -1,11 +1,5 @@
 package com.muyer.ippool.service;
 
-import com.muyer.crawl.model.Proxy;
-import com.muyer.crawl.util.Request;
-import org.jsoup.Jsoup;
-import org.jsoup.select.Elements;
-
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -23,7 +17,5 @@ public class CrawlProxy {
             "http://www.data5u.com/"
     );
 
-    public static void main(String[] args) {
 
-    }
 }
