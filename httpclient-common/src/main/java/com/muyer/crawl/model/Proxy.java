@@ -57,4 +57,14 @@ public class Proxy {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    @Override
+    public String toString() {
+        return "Proxy{" +
+                "host='" + host + '\'' +
+                ", port=" + port +
+                ", userName='" + userName + '\'' +
+                ", password='" + password + '\'' +
+                '}';
+    }
 }
